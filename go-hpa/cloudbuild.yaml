@@ -1,20 +1,20 @@
 steps:
 
-- id: build-test-image
-  name: gcr.io/cloud-builders/docker
-  entrypoint: bash
-  args:
-    - -c
-    - |
-      docker image build --target build --tag go-hpa:test .
+  - id: build-test-image
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker image build --target build --tag go-hpa:test .
 
   - id: run-tests
-  name: gcr.io/cloud-builders/docker
-  entrypoint: bash
-  args:
-    - -c
-    - |
-      docker container run go-hpa:test go test
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker container run go-hpa:test go test
 
 # - id: 'Instalando o app go-hpa'
 #   name: 'gcr.io/cloud-builders/go'
